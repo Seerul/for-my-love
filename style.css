@@ -10,6 +10,6 @@ canvas.webgl {
     display: block; /* remove default inline spacing */
     width: 100dvw;
     height: 100dvh;
-    touch-action: none; /* prevents default touch gestures like scroll/zoom */
+    touch-action: manipulation; /* prevents default touch gestures like scroll/zoom */
 }
 
