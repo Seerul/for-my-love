@@ -1,5 +1,15 @@
-body {
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* removes scrollbars */
+    width: 100dvw;
+    height: 100dvh;
 }
+
+canvas.webgl {
+    display: block; /* remove default inline spacing */
+    width: 100dvw;
+    height: 100dvh;
+    touch-action: manipulation; /* prevents default touch gestures like scroll/zoom */
+}
+
