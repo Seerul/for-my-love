@@ -3,8 +3,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { RectAreaLight } from 'three'
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
 
-
-
 const scene = new THREE.Scene()
 const loadingManager = new THREE.LoadingManager()
 
