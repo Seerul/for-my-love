@@ -142,34 +142,28 @@ canvas.addEventListener('mousemove', (e) => {
     camera.rotation.x = Math.max(minPolar - Math.PI/2, Math.min(maxPolar - Math.PI/2, camera.rotation.x))
 })
 
-canvas.addEventListener('mousedown', (e) => {
+canvas.addEventListener('touchstart', (e) => {
     isDragging = true
-    previousMousePosition.x = e.clientX
-    previousMousePosition.y = e.clientY
+    previousMousePosition.x = e.touches[0].clientX
+    previousMousePosition.y = e.touches[0].clientY
 })
 
-canvas.addEventListener('mouseup', () => {
+canvas.addEventListener('touchmove', (e) => {
+    if (!isDragging) return
+    const deltaX = e.touches[0].clientX - previousMousePosition.x
+    const deltaY = e.touches[0].clientY - previousMousePosition.y
+    previousMousePosition.x = e.touches[0].clientX
+    previousMousePosition.y = e.touches[0].clientY
+
+    camera.rotation.y -= deltaX * rotationSpeed
+    camera.rotation.x -= deltaY * rotationSpeed
+    camera.rotation.x = Math.max(minPolar - Math.PI/2, Math.min(maxPolar - Math.PI/2, camera.rotation.x))
+})
+
+canvas.addEventListener('touchend', () => {
     isDragging = false
 })
 
-canvas.addEventListener('mousemove', (e) => {
-    if (!isDragging) return
-
-    const deltaX = e.clientX - previousMousePosition.x
-    const deltaY = e.clientY - previousMousePosition.y
-
-    previousMousePosition.x = e.clientX
-    previousMousePosition.y = e.clientY
-
-    // Update camera rotation manually
-    camera.rotation.y -= deltaX * rotationSpeed
-    camera.rotation.x -= deltaY * rotationSpeed
-
-    // Clamp vertical rotation
-    const maxPolar = Math.PI / 1.5
-    const minPolar = Math.PI / 3
-    camera.rotation.x = Math.max(minPolar - Math.PI/2, Math.min(maxPolar - Math.PI/2, camera.rotation.x))
-})
 
 
 function onPointer(event) {
