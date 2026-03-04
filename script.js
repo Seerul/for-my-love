@@ -105,11 +105,75 @@ renderer.render(scene, camera)
 const controls = new PointerLockControls(camera, document.body)
 scene.add(camera)
 
-window.addEventListener('click', onPointer)
-window.addEventListener('touchstart', onPointer)
+//window.addEventListener('click', onPointer)
+//window.addEventListener('touchstart', onPointer)
+
+let isDragging = false
+let previousMousePosition = { x: 0, y: 0 }
+
+const rotationSpeed = 0.005 // adjust for sensitivity
+
+canvas.addEventListener('mousedown', (e) => {
+    isDragging = true
+    previousMousePosition.x = e.clientX
+    previousMousePosition.y = e.clientY
+})
+
+canvas.addEventListener('mouseup', () => {
+    isDragging = false
+})
+
+canvas.addEventListener('mousemove', (e) => {
+    if (!isDragging) return
+
+    const deltaX = e.clientX - previousMousePosition.x
+    const deltaY = e.clientY - previousMousePosition.y
+
+    previousMousePosition.x = e.clientX
+    previousMousePosition.y = e.clientY
+
+    // Update camera rotation manually
+    camera.rotation.y -= deltaX * rotationSpeed
+    camera.rotation.x -= deltaY * rotationSpeed
+
+    // Clamp vertical rotation
+    const maxPolar = Math.PI / 1.5
+    const minPolar = Math.PI / 3
+    camera.rotation.x = Math.max(minPolar - Math.PI/2, Math.min(maxPolar - Math.PI/2, camera.rotation.x))
+})
+
+canvas.addEventListener('mousedown', (e) => {
+    isDragging = true
+    previousMousePosition.x = e.clientX
+    previousMousePosition.y = e.clientY
+})
+
+canvas.addEventListener('mouseup', () => {
+    isDragging = false
+})
+
+canvas.addEventListener('mousemove', (e) => {
+    if (!isDragging) return
+
+    const deltaX = e.clientX - previousMousePosition.x
+    const deltaY = e.clientY - previousMousePosition.y
+
+    previousMousePosition.x = e.clientX
+    previousMousePosition.y = e.clientY
+
+    // Update camera rotation manually
+    camera.rotation.y -= deltaX * rotationSpeed
+    camera.rotation.x -= deltaY * rotationSpeed
+
+    // Clamp vertical rotation
+    const maxPolar = Math.PI / 1.5
+    const minPolar = Math.PI / 3
+    camera.rotation.x = Math.max(minPolar - Math.PI/2, Math.min(maxPolar - Math.PI/2, camera.rotation.x))
+})
+
 
 function onPointer(event) {
-    controls.lock()
+    //controls.lock()
     const x = event.clientX || event.touches[0].clientX
     const y = event.clientY || event.touches[0].clientY
 
@@ -127,7 +191,6 @@ function onPointer(event) {
                     
 function animate() {
     requestAnimationFrame(animate)
-    controls.update()
     renderer.render(scene, camera)
 }
 
