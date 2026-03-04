@@ -1,9 +1,9 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { RectAreaLight } from 'three';
-import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js'
-import { pointShadow } from 'three/tsl'
+import { RectAreaLight } from 'three'
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
+
+
 
 const scene = new THREE.Scene()
 const loadingManager = new THREE.LoadingManager()
