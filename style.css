@@ -12,3 +12,4 @@ canvas.webgl {
     height: 100%;
     touch-action: none; /* prevents default touch gestures like scroll/zoom */
 }
+
