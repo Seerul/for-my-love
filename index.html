@@ -4,20 +4,21 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css">    
+        <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js",
+                "three/examples/jsm/loaders/GLTFLoader.js": "https://cdn.jsdelivr.net/npm/three@0.164.0/examples/jsm/loaders/GLTFLoader.js",
+                "three/examples/jsm/controls/PointerLockControls.js": "https://cdn.jsdelivr.net/npm/three@0.164.0/examples/jsm/controls/PointerLockControls.js"
+            }
+        }
+        </script>
         
         <canvas class="webgl"></canvas>
     </head>
     <body>
 
     </body>
-    <script type="module">
-        import * as THREE from 'three'
-        import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-        import { RectAreaLight } from 'three';
-        import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js'
-        import { pointShadow } from 'three/tsl'
-        import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'
-    </script>   
     <script type="module" src="script.js"></script>
 </html>
